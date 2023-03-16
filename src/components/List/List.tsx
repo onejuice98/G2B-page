@@ -1,6 +1,6 @@
 import axios from "axios";
-import qs from "qs";
 import { useState } from "react";
+import { useMutation } from "react-query";
 import Input from "./Input";
 import Select from "./Select";
 import Table from "./Table";
@@ -22,46 +22,40 @@ export interface IPostList {
   마감여부: string;
 }
 
-const postData = async (
-  from: string,
-  to: string,
-  bidNo: string,
-  areaCode: string
-) => {
-  try {
-    const data = await axios({
-      method: "post",
-      url: "/api/posts",
-      data: qs.stringify({
-        from: from,
-        to: to,
-        bidCode: bidNo,
-        areaCode: areaCode,
-      }),
-      headers: {
-        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-      },
-    }).then((res) => res.data);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+interface PostListType {
+  from: string;
+  to: string;
+  bidCode: string;
+  areaCode: string;
+}
+const posts = async ({ from, to, bidCode, areaCode }: PostListType) => {
+  const { data } = await axios.post("/api/posts", {
+    from: from,
+    to: to,
+    bidCode: bidCode,
+    areaCode,
+  });
+  return data;
 };
+
 const List = () => {
   const [list, setList] = useState<IPostList[]>();
+  const { mutate, isLoading } = useMutation(posts, {
+    onSuccess: (data) => {
+      setList(data);
+    },
+  });
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { from, to, bidNo, areaCode } = event.currentTarget;
-
-    const data = await postData(
-      from.value,
-      to.value,
-      bidNo.value,
-      areaCode.value
-    );
-    await setList(data);
+    const dataForm = {
+      from: from.value,
+      to: to.value,
+      bidCode: bidNo.value,
+      areaCode: areaCode.value,
+    };
+    mutate(dataForm);
   };
-
   return (
     <>
       <form
@@ -90,7 +84,7 @@ const List = () => {
           검색
         </button>
       </form>
-      <Table data={list} />
+      <Table data={list} loading={isLoading} />
     </>
   );
 };

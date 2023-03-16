@@ -3,6 +3,7 @@ import { IPostList } from "./List";
 
 interface TableProps {
   data: IPostList[] | undefined;
+  loading: boolean;
 }
 
 const TABLE_HEADER = [
@@ -16,7 +17,7 @@ const TABLE_HEADER = [
 
 const PAGINATION_SHOW_DATAS = 8;
 
-const Table = ({ data }: TableProps) => {
+const Table = ({ data, loading }: TableProps) => {
   const [page, setPage] = useState<number>(1);
 
   /* 재검색 후 Pagination 1 페이지로 가게 하기 위한 Data dependency 연결 */
@@ -26,22 +27,26 @@ const Table = ({ data }: TableProps) => {
 
   return (
     <div className="flex flex-col justify-between w-full text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
-      {data === undefined ? (
-        "is Loading..."
-      ) : (
-        <>
-          <table className="table-auto">
-            <thead className="border-b-2">
-              <tr>
-                {TABLE_HEADER.map((value, index) => (
-                  <th key={index} className="whitespace-nowrap pb-2">
-                    {value}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody className="text-center">
-              {data
+      {loading && (
+        <div className="absolute z-10 w-full justify-center items-center bg-gray-500/70">
+          지금 로딩 중얌
+        </div>
+      )}
+
+      <>
+        <table className="table-auto">
+          <thead className="border-b-2">
+            <tr>
+              {TABLE_HEADER.map((value, index) => (
+                <th key={index} className="whitespace-nowrap pb-2">
+                  {value}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="text-center">
+            {data !== undefined &&
+              data
                 .slice(
                   (page - 1) * PAGINATION_SHOW_DATAS,
                   page * PAGINATION_SHOW_DATAS
@@ -61,10 +66,11 @@ const Table = ({ data }: TableProps) => {
                     <td className="whitespace-nowrap ">{value.마감여부}</td>
                   </tr>
                 ))}
-            </tbody>
-          </table>
-          <div className="flex gap-4 font-medium text-lg">
-            {Array(Math.ceil(data.length / PAGINATION_SHOW_DATAS))
+          </tbody>
+        </table>
+        <div className="flex gap-4 font-medium text-lg">
+          {data !== undefined &&
+            Array(Math.ceil(data.length / PAGINATION_SHOW_DATAS))
               .fill("")
               .map((_, index) => (
                 <button
@@ -75,9 +81,8 @@ const Table = ({ data }: TableProps) => {
                   {index + 1}
                 </button>
               ))}
-          </div>
-        </>
-      )}
+        </div>
+      </>
     </div>
   );
 };
