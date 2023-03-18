@@ -1,10 +1,10 @@
 import axios from "axios";
 
 interface PostListType {
-  from: string;
-  to: string;
-  bidCode: string;
-  areaCode: string;
+  from?: string;
+  to?: string;
+  bidCode?: string;
+  areaCode?: string;
 }
 
 export const postList = async ({
@@ -19,5 +19,11 @@ export const postList = async ({
     bidCode: bidCode,
     areaCode,
   });
+  return data;
+};
+
+export const getList = async () => {
+  const { data } = await axios.get(`/api/posts`);
+
   return data;
 };

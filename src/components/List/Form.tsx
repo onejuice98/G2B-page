@@ -7,7 +7,7 @@ const AREA_OPTIONS = ["선택", "강원", "강원 횡성"];
 const AREA_VALUES = ["000000", "42", "42730"];
 
 interface FormProps {
-  submitFn: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  submitFn: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 const Form = ({ submitFn }: FormProps) => {
   return (

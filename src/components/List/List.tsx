@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useMutation } from "react-query";
-import { postList } from "../../lib/apis";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { getList, postList } from "../../lib/apis";
 import Form from "./Form";
 import Table from "./Table";
 
@@ -17,14 +16,16 @@ export interface IPostList {
 }
 
 const List = () => {
-  const [list, setList] = useState<IPostList[]>();
-  const { mutate, isLoading } = useMutation(postList, {
-    onSuccess: (data) => {
-      setList(data);
+  const queryClient = useQueryClient();
+  const { isLoading, data: lists } = useQuery("lists", getList);
+  const { mutate, isLoading: mutateLoading } = useMutation(postList, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("lists");
     },
   });
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const { from, to, bidNo, areaCode } = event.currentTarget;
     const dataForm = {
       from: from.value,
@@ -32,12 +33,14 @@ const List = () => {
       bidCode: bidNo.value,
       areaCode: areaCode.value,
     };
+
     mutate(dataForm);
   };
+
   return (
     <>
       <Form submitFn={handleSubmit} />
-      <Table data={list} loading={isLoading} />
+      <Table data={lists} loading={isLoading || mutateLoading} />
     </>
   );
 };
