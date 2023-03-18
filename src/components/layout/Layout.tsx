@@ -13,7 +13,7 @@ const Layout = () => {
   };
   return (
     <>
-      <Header />
+      <Header current={content} />
       <div className="flex h-[calc(100vh-64px)] bg-gray-100">
         <Side clickFn={menuClicked} />
         <div className="flex w-full gap-4 p-4">

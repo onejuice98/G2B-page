@@ -33,7 +33,11 @@ const Menu = ({ clickFn, name }: MenuProps) => {
   }
 
   return (
-    <button onClick={clickFn} name={name}>
+    <button
+      onClick={clickFn}
+      name={name}
+      className="hover:scale-110 duration-300"
+    >
       <GrayText>
         {nameSvg}
         {name}
