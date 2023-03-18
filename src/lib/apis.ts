@@ -13,7 +13,7 @@ export const postList = async ({
   bidCode,
   areaCode,
 }: PostListType) => {
-  const { data } = await axios.post("/api/posts", {
+  const { data } = await axios.post(`/api/posts`, {
     from: from,
     to: to,
     bidCode: bidCode,

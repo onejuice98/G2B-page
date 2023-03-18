@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import GrayText from "../common/GrayText";
 import { LoadingSVG } from "../common/svgs";
 import { IPostList } from "./List";
 
