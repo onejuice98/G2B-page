@@ -31,8 +31,30 @@ const Example = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between gap-4">
-        <div className="flex flex-col w-full p-4 bg-white rounded-md shadow-md">
-          <span className="w-full py-2 text-2xl border-b">모의기 사용방법</span>
+        <div className="flex flex-col w-full p-4 bg-white rounded-md shadow-md gap-2">
+          <span className="w-full py-2 text-2xl border-b">모의기 설정</span>
+          <div className="flex gap-2 opacity-0">
+            <GrayText> 모드 : </GrayText>
+            <label className="flex justify-center items-center gap-2">
+              <input
+                type="radio"
+                name="mode"
+                value={"self"}
+                className="h-5 w-5 border-2 cursor-pointer appearance-none border-gray-500 text-green-500 duration-500 checked:border-green-500 focus:ring-green-500"
+              />
+              <GrayText>직접하기</GrayText>
+            </label>
+
+            <label className="flex justify-center items-center gap-2">
+              <input
+                type="radio"
+                name="mode"
+                value={"auto"}
+                className="h-5 w-5 border-2 cursor-pointer appearance-none border-gray-500 text-green-500 duration-500 checked:border-green-500 focus:ring-green-500"
+              />
+              <GrayText>자동</GrayText>
+            </label>
+          </div>
         </div>
       </div>
 
@@ -42,7 +64,7 @@ const Example = () => {
             key={index}
             onClick={() => cardClicked(value, index)}
             value={value}
-            disabled={selectedCard.includes(index)}
+            disabled={selectedCard.includes(index) || clickCnt > 3}
             className="flex items-center justify-center w-32 h-32 bg-white rounded-md shadow-md font-medium text-2xl hover:bg-emerald-100 hover:scale-110 duration-500"
           >
             {selectedCard.includes(index) && (
