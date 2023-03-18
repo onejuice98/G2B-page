@@ -17,7 +17,7 @@ const OFFSET_VALUES = [
   { min: 2.663, max: 2.877 },
 ];
 
-const offsetRand = (min: number, max: number) => {
+export const offsetRand = (min: number, max: number) => {
   return Math.random() * (max - min) + min;
 };
 
@@ -33,6 +33,19 @@ const shuffle = (array: number[]) => {
   return array;
 };
 
+export const randSelect = (maxCount: number) => {
+  let result: number[] = [];
+  let count = 0;
+  while (count < maxCount) {
+    let num = Math.floor(offsetRand(0, 14));
+    if (!result.includes(num)) {
+      result.push(num);
+      count += 1;
+    }
+  }
+  return result;
+};
+// 랜덤 카드 생성기
 export const randCardValue = () => {
   let cardValues: number[] = [];
   for (let i = 0; i < CARD_COUNT; i++) {
