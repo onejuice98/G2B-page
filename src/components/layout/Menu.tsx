@@ -10,7 +10,7 @@ import {
 
 interface MenuProps {
   clickFn: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  name: "Dashboard" | "List" | "Charts" | "Example" | "Settings";
+  name: "Dashboard" | "목록" | "Charts" | "모의" | "Settings";
 }
 const Menu = ({ clickFn, name }: MenuProps) => {
   let nameSvg;
@@ -18,13 +18,13 @@ const Menu = ({ clickFn, name }: MenuProps) => {
     case "Dashboard":
       nameSvg = <DashboardSVG w={20} h={20} />;
       break;
-    case "List":
+    case "목록":
       nameSvg = <ListSVG w={20} h={20} />;
       break;
     case "Charts":
       nameSvg = <ChartSVG w={20} h={20} />;
       break;
-    case "Example":
+    case "모의":
       nameSvg = <EyeSVG w={20} h={20} />;
       break;
     case "Settings":

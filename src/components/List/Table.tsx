@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import GrayText from "../common/GrayText";
+import { LoadingSVG } from "../common/svgs";
 import { IPostList } from "./List";
 
 interface TableProps {
@@ -26,14 +28,16 @@ const Table = ({ data, loading }: TableProps) => {
   }, [data]);
 
   return (
-    <div className="flex flex-col justify-between w-full text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
+    <>
       {loading && (
-        <div className="absolute z-10 w-full justify-center items-center bg-gray-500/70">
-          지금 로딩 중얌
+        <div className="flex flex-col justify-center items-center bg-gray-500/30 absolute top-0 left-0 w-screen h-screen gap-4">
+          <LoadingSVG w={48} h={48} />
+          <span className="font-bold text-lg text-gray-500 animate-bounce">
+            잠시만 기달려주세요! 기간을 길게하면 오래걸려요
+          </span>
         </div>
       )}
-
-      <>
+      <div className="flex flex-col justify-between w-full text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
         <table className="table-auto">
           <thead className="border-b-2">
             <tr>
@@ -82,8 +86,8 @@ const Table = ({ data, loading }: TableProps) => {
                 </button>
               ))}
         </div>
-      </>
-    </div>
+      </div>
+    </>
   );
 };
 export default Table;

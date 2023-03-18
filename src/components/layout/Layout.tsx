@@ -5,7 +5,7 @@ import Header from "./Header";
 import Side from "./Side";
 
 const Layout = () => {
-  const [content, setContent] = useState<string>("List");
+  const [content, setContent] = useState<string>("목록");
   const menuClicked = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -17,8 +17,8 @@ const Layout = () => {
       <div className="flex h-[calc(100vh-64px)] bg-gray-100">
         <Side clickFn={menuClicked} />
         <div className="flex w-full gap-4 p-4">
-          {content === "List" && <List />}
-          {content === "Example" && <Example />}
+          {content === "목록" && <List />}
+          {content === "모의" && <Example />}
         </div>
       </div>
     </>
