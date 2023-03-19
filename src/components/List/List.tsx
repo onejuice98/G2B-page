@@ -70,7 +70,9 @@ const List = () => {
         </div>
       </div>
 
-      <Table data={lists} loading={isLoading || mutateLoading} />
+      {lists !== undefined && (
+        <Table data={lists} loading={isLoading || mutateLoading} />
+      )}
     </>
   );
 };
