@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/najangbot/static/css/main.cd850b10.css",
-    "main.js": "/najangbot/static/js/main.62042013.js",
+    "main.js": "/najangbot/static/js/main.30cfbbbe.js",
     "index.html": "/najangbot/index.html",
     "main.cd850b10.css.map": "/najangbot/static/css/main.cd850b10.css.map",
-    "main.62042013.js.map": "/najangbot/static/js/main.62042013.js.map"
+    "main.30cfbbbe.js.map": "/najangbot/static/js/main.30cfbbbe.js.map"
   },
   "entrypoints": [
     "static/css/main.cd850b10.css",
-    "static/js/main.62042013.js"
+    "static/js/main.30cfbbbe.js"
   ]
 }
