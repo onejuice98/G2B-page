@@ -49,6 +49,7 @@ const Table = ({ data, loading }: TableProps) => {
           </thead>
           <tbody className="text-center">
             {data !== undefined &&
+              data.length &&
               data.slice((page - 1) * 8, page * 8).map((value, index) => (
                 <tr key={index} className="border-b">
                   <td className="whitespace-nowrap py-6">{value.공고번호}</td>
