@@ -17,7 +17,7 @@ export interface IPostList {
 
 const List = () => {
   const queryClient = useQueryClient();
-  const { isLoading, data: lists } = useQuery("lists", getList);
+  const { isLoading, data: lists } = useQuery<IPostList[]>("lists", getList);
   const { mutate, isLoading: mutateLoading } = useMutation(postList, {
     onSuccess: () => {
       queryClient.invalidateQueries("lists");
