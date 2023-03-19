@@ -20,10 +20,11 @@ const PAGINATION_SHOW_DATAS = 8;
 
 const Table = ({ data, loading }: TableProps) => {
   const [page, setPage] = useState<number>(1);
-
+  const [list, setList] = useState<IPostList[]>([]);
   /* 재검색 후 Pagination 1 페이지로 가게 하기 위한 Data dependency 연결 */
   useEffect(() => {
     setPage(1);
+    setList(data);
   }, [data]);
 
   return (
@@ -48,8 +49,8 @@ const Table = ({ data, loading }: TableProps) => {
             </tr>
           </thead>
           <tbody className="text-center">
-            {data !== undefined &&
-              data
+            {list !== undefined &&
+              list
                 .slice(
                   (page - 1) * PAGINATION_SHOW_DATAS,
                   page * PAGINATION_SHOW_DATAS
