@@ -49,26 +49,21 @@ const Table = ({ data, loading }: TableProps) => {
           </thead>
           <tbody className="text-center">
             {data !== undefined &&
-              data
-                .slice(
-                  (page - 1) * PAGINATION_SHOW_DATAS,
-                  page * PAGINATION_SHOW_DATAS
-                )
-                .map((value, index) => (
-                  <tr key={index} className="border-b">
-                    <td className="whitespace-nowrap py-6">{value.공고번호}</td>
-                    <td className="whitespace-nowrap ">{value.분류}</td>
-                    <td className="">{value.공고명}</td>
-                    <td className="">{value.수요기관}</td>
-                    <td className="flex flex-col">
-                      {value.입력일시.slice(0, 16)}
-                      <span className="whitespace-nowrap text-blue-300">
-                        {value.입찰마감일시}
-                      </span>
-                    </td>
-                    <td className="whitespace-nowrap ">{value.마감여부}</td>
-                  </tr>
-                ))}
+              data.slice((page - 1) * 8, page * 8).map((value, index) => (
+                <tr key={index} className="border-b">
+                  <td className="whitespace-nowrap py-6">{value.공고번호}</td>
+                  <td className="whitespace-nowrap ">{value.분류}</td>
+                  <td className="">{value.공고명}</td>
+                  <td className="">{value.수요기관}</td>
+                  <td className="flex flex-col">
+                    {value.입력일시.slice(0, 16)}
+                    <span className="whitespace-nowrap text-blue-300">
+                      {value.입찰마감일시}
+                    </span>
+                  </td>
+                  <td className="whitespace-nowrap ">{value.마감여부}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
         <div className="flex gap-4 font-medium text-lg">
