@@ -13,7 +13,7 @@ export const postList = async ({
   bidCode,
   areaCode,
 }: PostListType) => {
-  const { data } = await axios.post(`/api/posts`, {
+  const { data } = await axios.post(`https://g2b-bot.herokuapp.com/api/posts`, {
     from: from,
     to: to,
     bidCode: bidCode,
@@ -23,7 +23,7 @@ export const postList = async ({
 };
 
 export const getList = async () => {
-  const { data } = await axios.get(`/api/posts`);
+  const { data } = await axios.get(`https://g2b-bot.herokuapp.com/api/posts`);
 
   return data;
 };
