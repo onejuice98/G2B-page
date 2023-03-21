@@ -6,7 +6,7 @@ interface SideProps {
 }
 const Side = ({ clickFn }: SideProps) => {
   return (
-    <nav className="w-40 top-0 left-0 px-4 flex flex-col justify-around bg-white">
+    <nav className="flex flex-col justify-around w-40 top-0 left-0 px-4 bg-white">
       <Menu clickFn={clickFn} name="Dashboard" />
       <Menu clickFn={clickFn} name="목록" />
       <Menu clickFn={clickFn} name="모의" />
