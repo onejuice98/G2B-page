@@ -6,13 +6,15 @@ interface SideProps {
 }
 const Side = ({ clickFn }: SideProps) => {
   return (
-    <nav className="flex flex-col justify-around w-40 top-0 left-0 px-4 bg-white">
-      <Menu clickFn={clickFn} name="Dashboard" />
-      <Menu clickFn={clickFn} name="목록" />
-      <Menu clickFn={clickFn} name="모의" />
-      <Menu clickFn={clickFn} name="Charts" />
-      <Menu clickFn={clickFn} name="Settings" />
-    </nav>
+    <aside className="fixed w-[260px] h-full pt-[80px] bg-white z-10">
+      <nav className="flex flex-col justify-around px-8 gap-4">
+        <Menu clickFn={clickFn} name="Dashboard" />
+        <Menu clickFn={clickFn} name="목록" />
+        <Menu clickFn={clickFn} name="모의" />
+        <Menu clickFn={clickFn} name="Charts" />
+        <Menu clickFn={clickFn} name="Settings" />
+      </nav>
+    </aside>
   );
 };
 export default Side;

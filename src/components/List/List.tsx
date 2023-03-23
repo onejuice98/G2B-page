@@ -40,7 +40,7 @@ const List = () => {
   return (
     <>
       <div className="flex w-full gap-2">
-        <div className="flex flex-col justify-between gap-2">
+        <div className="flex flex-col gap-2">
           <Form submitFn={handleSubmit} />
           <div className="flex flex-col w-full bg-white rounded-md shadow-md p-4 gap-2">
             <span className="font-medium text-lg border-b">안내사항</span>

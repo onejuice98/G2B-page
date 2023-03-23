@@ -14,12 +14,11 @@ const Layout = () => {
   return (
     <>
       <Header current={content} />
-      <div className="flex">
-        <Side clickFn={menuClicked} />
-        <div className="flex w-full h-full bg-gray-100 gap-4 p-4">
-          {content === "목록" && <List />}
-          {content === "모의" && <Example />}
-        </div>
+      <Side clickFn={menuClicked} />
+
+      <div className="flex w-[calc(100%-260px)] bg-gray-100 gap-4 p-4 ml-[260px] pt-[80px]">
+        {content === "목록" && <List />}
+        {content === "모의" && <Example />}
       </div>
     </>
   );

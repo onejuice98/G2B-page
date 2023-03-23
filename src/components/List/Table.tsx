@@ -16,7 +16,7 @@ const TABLE_HEADER = [
   "마감여부",
 ];
 
-const PAGINATION_SHOW_DATAS = 8;
+const PAGINATION_SHOW_DATAS = 20;
 
 const Table = ({ data, loading }: TableProps) => {
   const [page, setPage] = useState<number>(1);
@@ -30,7 +30,7 @@ const Table = ({ data, loading }: TableProps) => {
   return (
     <>
       {loading && (
-        <div className="flex flex-col justify-center items-center bg-gray-500/30 absolute top-0 left-0 w-screen h-screen gap-4">
+        <div className="flex flex-col justify-center items-center bg-gray-500/30 fixed top-0 left-0 w-screen h-screen gap-4">
           <LoadingSVG w={48} h={48} />
           <span className="font-bold text-lg text-gray-500 animate-bounce">
             잠시만 기달려주세요! 기간을 길게하면 오래걸려요
