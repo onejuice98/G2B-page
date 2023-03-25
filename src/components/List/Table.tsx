@@ -16,11 +16,12 @@ const TABLE_HEADER = [
   "마감여부",
 ];
 
-const PAGINATION_SHOW_DATAS = 20;
+const PAGINATION_SHOW_DATAS = 12;
 
 const Table = ({ data, loading }: TableProps) => {
   const [page, setPage] = useState<number>(1);
   const [list, setList] = useState<IPostList[]>([]);
+
   /* 재검색 후 Pagination 1 페이지로 가게 하기 위한 Data dependency 연결 */
   useEffect(() => {
     setPage(1);
@@ -30,22 +31,23 @@ const Table = ({ data, loading }: TableProps) => {
   return (
     <>
       {loading && (
-        <div className="flex flex-col justify-center items-center bg-gray-500/30 fixed top-0 left-0 w-screen h-screen gap-4">
+        <div className="fixed flex flex-col justify-center items-center bg-gray-500/30 top-0 left-0 w-full h-full gap-4 z-50">
           <LoadingSVG w={48} h={48} />
           <span className="font-bold text-lg text-gray-500 animate-bounce">
-            잠시만 기달려주세요! 기간을 길게하면 오래걸려요
+            잠시만 기달려주세요! 기간을 길게하면 오래걸려요 😉
           </span>
         </div>
       )}
-      <div className="flex flex-col justify-between w-full text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
-        <table className="table-auto">
+      <div className="flex flex-col w-full justify-between text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
+        <table className="w-full">
           <thead className="border-b-2">
             <tr>
-              {TABLE_HEADER.map((value, index) => (
-                <th key={index} className="whitespace-nowrap pb-2">
-                  {value}
-                </th>
-              ))}
+              <th className="w-40">공고번호</th>
+              <th className="w-10">분류</th>
+              <th className="w-[420px]">공고명</th>
+              <th className="w-32">수요기관</th>
+              <th className="w-44">입력일시(마감일)</th>
+              <th className="w-14">마감여부</th>
             </tr>
           </thead>
           <tbody className="text-center">
@@ -56,23 +58,23 @@ const Table = ({ data, loading }: TableProps) => {
                   page * PAGINATION_SHOW_DATAS
                 )
                 .map((value, index) => (
-                  <tr key={index} className="border-b">
-                    <td className="whitespace-nowrap py-6">{value.공고번호}</td>
-                    <td className="whitespace-nowrap ">{value.분류}</td>
-                    <td className="">{value.공고명}</td>
-                    <td className="">{value.수요기관}</td>
-                    <td className="flex flex-col">
+                  <tr key={index} className="border-b h-16">
+                    <td className="py-6">{value.공고번호}</td>
+                    <td>{value.분류}</td>
+                    <td className="font-bold">{value.공고명}</td>
+                    <td>{value.수요기관}</td>
+                    <td className="flex flex-col h-16 justify-center">
                       {value.입력일시.slice(0, 16)}
-                      <span className="whitespace-nowrap text-blue-300">
+                      <span className="text-xs text-blue-300">
                         {value.입찰마감일시}
                       </span>
                     </td>
-                    <td className="whitespace-nowrap ">{value.마감여부}</td>
+                    <td className=" ">{value.마감여부}</td>
                   </tr>
                 ))}
           </tbody>
         </table>
-        <div className="flex gap-4 font-medium text-lg">
+        <div className="flex gap-4 font-medium text-lg right-0">
           {data !== undefined &&
             Array(Math.ceil(data.length / PAGINATION_SHOW_DATAS))
               .fill("")
