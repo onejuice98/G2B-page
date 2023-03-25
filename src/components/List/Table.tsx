@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getDetail } from "../../lib/apis";
 import { LoadingSVG } from "../common/svgs";
 import { IPostList } from "./List";
 
@@ -21,6 +22,7 @@ const PAGINATION_SHOW_DATAS = 12;
 const Table = ({ data, loading }: TableProps) => {
   const [page, setPage] = useState<number>(1);
   const [list, setList] = useState<IPostList[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
 
   /* 재검색 후 Pagination 1 페이지로 가게 하기 위한 Data dependency 연결 */
   useEffect(() => {
@@ -28,6 +30,12 @@ const Table = ({ data, loading }: TableProps) => {
     setList(data);
   }, [data]);
 
+  useEffect(() => {
+    if (searchKeyword !== "") {
+      //let data = await getDetail(searchKeyword.slice(0, 11));
+      //console.log(data);
+    }
+  }, [searchKeyword]);
   return (
     <>
       {loading && (
@@ -38,16 +46,16 @@ const Table = ({ data, loading }: TableProps) => {
           </span>
         </div>
       )}
-      <div className="flex flex-col w-full justify-between text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
-        <table className="w-full">
+      <div className="flex flex-col max-w-[1200px] justify-between text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
+        <table className="">
           <thead className="border-b-2">
             <tr>
               <th className="w-40">공고번호</th>
-              <th className="w-10">분류</th>
+              <th className="w-14">분류</th>
               <th className="w-[420px]">공고명</th>
               <th className="w-32">수요기관</th>
               <th className="w-44">입력일시(마감일)</th>
-              <th className="w-14">마감여부</th>
+              <th className="w-20">마감여부</th>
             </tr>
           </thead>
           <tbody className="text-center">
@@ -59,9 +67,23 @@ const Table = ({ data, loading }: TableProps) => {
                 )
                 .map((value, index) => (
                   <tr key={index} className="border-b h-16">
-                    <td className="py-6">{value.공고번호}</td>
+                    <td className="py-6">
+                      <span
+                        onClick={() => setSearchKeyword(value.공고번호)}
+                        className="hover:text-green-600 cursor-pointer"
+                      >
+                        {value.공고번호}
+                      </span>
+                    </td>
                     <td>{value.분류}</td>
-                    <td className="font-bold">{value.공고명}</td>
+                    <td>
+                      <span
+                        onClick={() => setSearchKeyword(value.공고번호)}
+                        className="font-bold hover:text-green-600 cursor-pointer"
+                      >
+                        {value.공고명}
+                      </span>
+                    </td>
                     <td>{value.수요기관}</td>
                     <td className="flex flex-col h-16 justify-center">
                       {value.입력일시.slice(0, 16)}
@@ -74,7 +96,7 @@ const Table = ({ data, loading }: TableProps) => {
                 ))}
           </tbody>
         </table>
-        <div className="flex gap-4 font-medium text-lg right-0">
+        <div className="flex gap-4 font-medium text-lg right-0 ml-2">
           {data !== undefined &&
             Array(Math.ceil(data.length / PAGINATION_SHOW_DATAS))
               .fill("")
@@ -89,6 +111,11 @@ const Table = ({ data, loading }: TableProps) => {
               ))}
         </div>
       </div>
+      {searchKeyword !== "" && (
+        <div className="w-full h-36 p-4 bg-white rounded-md shadow-md">
+          {searchKeyword}
+        </div>
+      )}
     </>
   );
 };
