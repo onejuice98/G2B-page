@@ -30,12 +30,12 @@ const Table = ({ data, loading }: TableProps) => {
     setList(data);
   }, [data]);
 
-  useEffect(() => {
-    if (searchKeyword !== "") {
-      //let data = await getDetail(searchKeyword.slice(0, 11));
-      //console.log(data);
-    }
-  }, [searchKeyword]);
+  const clickedItem = async (keyword: string) => {
+    const data = await getDetail(keyword.slice(0, 11));
+
+    console.log(data);
+  };
+
   return (
     <>
       {loading && (
@@ -69,7 +69,7 @@ const Table = ({ data, loading }: TableProps) => {
                   <tr key={index} className="border-b h-16">
                     <td className="py-6">
                       <span
-                        onClick={() => setSearchKeyword(value.공고번호)}
+                        onClick={() => clickedItem(value.공고번호)}
                         className="hover:text-green-600 cursor-pointer"
                       >
                         {value.공고번호}
@@ -78,7 +78,7 @@ const Table = ({ data, loading }: TableProps) => {
                     <td>{value.분류}</td>
                     <td>
                       <span
-                        onClick={() => setSearchKeyword(value.공고번호)}
+                        onClick={() => clickedItem(value.공고번호)}
                         className="font-bold hover:text-green-600 cursor-pointer"
                       >
                         {value.공고명}

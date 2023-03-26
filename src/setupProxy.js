@@ -5,6 +5,10 @@ module.exports = function (app) {
     createProxyMiddleware("/api/posts", {
       target: "https://g2b-bot.herokuapp.com",
       changeOrigin: true,
+    }),
+    createProxyMiddleware("/api/post", {
+      target: "https://g2b-bot.herokuapp.com",
+      changeOrigin: true,
     })
   );
 };

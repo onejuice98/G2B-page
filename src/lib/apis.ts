@@ -33,5 +33,5 @@ export const getDetail = async (bidNo: string) => {
     `https://g2b-bot.herokuapp.com/api/post/result?bidNo=${bidNo}`
   );
 
-  return data.data();
+  return data;
 };
