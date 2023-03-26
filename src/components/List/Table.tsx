@@ -19,10 +19,19 @@ const TABLE_HEADER = [
 
 const PAGINATION_SHOW_DATAS = 12;
 
+type DetailType = {
+  업체명: string;
+  대표자명: string;
+  "입찰금액(원)": string;
+  "투찰률(%)": string;
+  기초금액: string;
+};
 const Table = ({ data, loading }: TableProps) => {
   const [page, setPage] = useState<number>(1);
   const [list, setList] = useState<IPostList[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>("");
+  const [detailData, setDetailData] = useState<DetailType[]>([]);
+  const [detailLoading, setDetailLoading] = useState<boolean>(false);
 
   /* 재검색 후 Pagination 1 페이지로 가게 하기 위한 Data dependency 연결 */
   useEffect(() => {
@@ -30,22 +39,38 @@ const Table = ({ data, loading }: TableProps) => {
     setList(data);
   }, [data]);
 
-  const clickedItem = async (keyword: string) => {
-    const data = await getDetail(keyword.slice(0, 11));
+  const fetchDetail = async (keyword: string) => {
+    try {
+      setDetailLoading(true);
 
-    console.log(data);
+      const data = await getDetail(keyword.slice(0, 11));
+      setDetailData(data);
+      setDetailLoading(false);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const clickedItem = (keyword: string) => {
+    /* loading state true로 set! 후 출력 */
+    //console.log(detailLoading);
+
+    fetchDetail(keyword);
+
+    /* loading state false로 set! 후 출력 + data도 출력 */
+    //console.log(detailLoading);
   };
 
   return (
     <>
-      {loading && (
-        <div className="fixed flex flex-col justify-center items-center bg-gray-500/30 top-0 left-0 w-full h-full gap-4 z-50">
-          <LoadingSVG w={48} h={48} />
-          <span className="font-bold text-lg text-gray-500 animate-bounce">
-            잠시만 기달려주세요! 기간을 길게하면 오래걸려요 😉
-          </span>
-        </div>
-      )}
+      {loading ||
+        (detailLoading && (
+          <div className="fixed flex flex-col justify-center items-center bg-gray-500/30 top-0 left-0 w-full h-full gap-4 z-50">
+            <LoadingSVG w={48} h={48} />
+            <span className="font-bold text-lg text-gray-500 animate-bounce">
+              잠시만 기달려주세요! 기간을 길게하면 오래걸려요 😉
+            </span>
+          </div>
+        ))}
       <div className="flex flex-col max-w-[1200px] justify-between text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
         <table className="">
           <thead className="border-b-2">
@@ -111,9 +136,11 @@ const Table = ({ data, loading }: TableProps) => {
               ))}
         </div>
       </div>
-      {searchKeyword !== "" && (
+      {!detailLoading && detailData.length > 0 && (
         <div className="w-full h-36 p-4 bg-white rounded-md shadow-md">
-          {searchKeyword}
+          {detailData.map((value) => (
+            <div>{value.대표자명}</div>
+          ))}
         </div>
       )}
     </>
