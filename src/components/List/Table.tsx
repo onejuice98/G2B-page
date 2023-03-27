@@ -8,15 +8,6 @@ interface TableProps {
   loading: boolean;
 }
 
-const TABLE_HEADER = [
-  "공고번호",
-  "분류",
-  "공고명",
-  "수요기관",
-  "입력일시(마감일)",
-  "마감여부",
-];
-
 const PAGINATION_SHOW_DATAS = 12;
 
 type DetailType = {
@@ -29,7 +20,6 @@ type DetailType = {
 const Table = ({ data, loading }: TableProps) => {
   const [page, setPage] = useState<number>(1);
   const [list, setList] = useState<IPostList[]>([]);
-  const [searchKeyword, setSearchKeyword] = useState<string>("");
   const [detailData, setDetailData] = useState<DetailType[]>([]);
   const [detailLoading, setDetailLoading] = useState<boolean>(false);
 
@@ -39,38 +29,28 @@ const Table = ({ data, loading }: TableProps) => {
     setList(data);
   }, [data]);
 
-  const fetchDetail = async (keyword: string) => {
-    try {
-      setDetailLoading(true);
+  const clickedItem = async (keyword: string) => {
+    /* loading start */
+    setDetailLoading(true);
 
-      const data = await getDetail(keyword.slice(0, 11));
-      setDetailData(data);
-      setDetailLoading(false);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  const clickedItem = (keyword: string) => {
-    /* loading state true로 set! 후 출력 */
-    //console.log(detailLoading);
+    /* Axios get data */
+    const data = await getDetail(keyword.slice(0, 11));
+    setDetailData(data);
 
-    fetchDetail(keyword);
-
-    /* loading state false로 set! 후 출력 + data도 출력 */
-    //console.log(detailLoading);
+    /* end Loading */
+    setDetailLoading(false);
   };
 
   return (
     <>
-      {loading ||
-        (detailLoading && (
-          <div className="fixed flex flex-col justify-center items-center bg-gray-500/30 top-0 left-0 w-full h-full gap-4 z-50">
-            <LoadingSVG w={48} h={48} />
-            <span className="font-bold text-lg text-gray-500 animate-bounce">
-              잠시만 기달려주세요! 기간을 길게하면 오래걸려요 😉
-            </span>
-          </div>
-        ))}
+      {(loading || detailLoading) && (
+        <div className="fixed flex flex-col justify-center items-center bg-gray-500/30 top-0 left-0 w-full h-full gap-4 z-50">
+          <LoadingSVG w={48} h={48} />
+          <span className="font-bold text-lg text-gray-500 animate-bounce">
+            잠시만 기달려주세요! 기간을 길게하면 오래걸려요 😉
+          </span>
+        </div>
+      )}
       <div className="flex flex-col max-w-[1200px] justify-between text-gray-500 text-base gap-2 p-2 bg-white rounded-md shadow-md">
         <table className="">
           <thead className="border-b-2">
@@ -137,10 +117,29 @@ const Table = ({ data, loading }: TableProps) => {
         </div>
       </div>
       {!detailLoading && detailData.length > 0 && (
-        <div className="w-full h-36 p-4 bg-white rounded-md shadow-md">
-          {detailData.map((value) => (
-            <div>{value.대표자명}</div>
-          ))}
+        <div className="w-full p-4 bg-white rounded-md shadow-md">
+          <table>
+            <thead>
+              <tr>
+                <th>업체명</th>
+                <th>대표자명</th>
+                <th>입찰금액(원)</th>
+                <th>투찰률(%)</th>
+                <th>기초금액</th>
+              </tr>
+            </thead>
+            <tbody>
+              {detailData.map((value, index) => (
+                <tr key={index}>
+                  <td> {value.업체명}</td>
+                  <td> {value.대표자명}</td>
+                  <td> {value["입찰금액(원)"]}</td>
+                  <td> {value["투찰률(%)"]}</td>
+                  <td> {value.기초금액}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </>
