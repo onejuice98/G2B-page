@@ -27,3 +27,11 @@ export const getList = async () => {
 
   return data;
 };
+
+export const getDetail = async (bidNo: string) => {
+  const { data } = await axios.get(
+    `https://g2b-bot.herokuapp.com/api/post/result?bidNo=${bidNo}`
+  );
+
+  return data;
+};

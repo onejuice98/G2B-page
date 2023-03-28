@@ -12,11 +12,11 @@ interface FormProps {
 const Form = ({ submitFn }: FormProps) => {
   return (
     <form
-      className="flex flex-col h-fit text-gray-500 text-sm gap-2 p-4 bg-white rounded-md shadow-md"
+      className="flex w-fit justify-around text-gray-500 text-sm gap-2 p-4 bg-white rounded-md shadow-md"
       onSubmit={submitFn}
     >
-      <Input name="from" label="시작 (연도월일, 예시 : 20230301)" />
-      <Input name="to" label="종료 (연도월일, 예시 : 20230301)" />
+      <Input name="from" label="시작날짜" />
+      <Input name="to" label="종료날짜" />
       <Select
         name="bidNo"
         label="업종"

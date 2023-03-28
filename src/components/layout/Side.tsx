@@ -6,7 +6,7 @@ interface SideProps {
 }
 const Side = ({ clickFn }: SideProps) => {
   return (
-    <aside className="fixed w-[260px] h-full pt-[80px] bg-white z-10">
+    <aside className="fixed w-[160px] h-full pt-[80px] bg-white z-10 shadow-md">
       <nav className="flex flex-col justify-around px-8 gap-4">
         <Menu clickFn={clickFn} name="Dashboard" />
         <Menu clickFn={clickFn} name="목록" />

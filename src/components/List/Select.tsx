@@ -1,3 +1,5 @@
+import Label from "../common/list/Label";
+
 interface SelectProps extends React.ComponentProps<"select"> {
   label: string;
   name: string;
@@ -7,10 +9,10 @@ interface SelectProps extends React.ComponentProps<"select"> {
 const Select = ({ label, name, options, values, ...rest }: SelectProps) => {
   return (
     <div className="flex flex-col">
-      <label> {label}</label>
+      <Label text={label} />
       <select
         name={name}
-        className="rounded-md focus:border-green-600 focus:ring-0"
+        className="w-24 text-xs rounded-md focus:border-green-600 focus:ring-0"
         {...rest}
       >
         {options.map((option, index) => (

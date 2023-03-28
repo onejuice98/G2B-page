@@ -16,7 +16,7 @@ const Layout = () => {
       <Header current={content} />
       <Side clickFn={menuClicked} />
 
-      <div className="flex w-[calc(100%-260px)] bg-gray-100 gap-4 p-4 ml-[260px] pt-[80px]">
+      <div className="flex w-[calc(100%-160px)] p-4 ml-[160px] pt-[80px]">
         {content === "목록" && <List />}
         {content === "모의" && <Example />}
       </div>
