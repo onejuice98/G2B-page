@@ -118,9 +118,9 @@ const Table = ({ data, loading }: TableProps) => {
       </div>
       {!detailLoading && detailData.length > 0 && (
         <div className="w-full p-4 bg-white rounded-md shadow-md">
-          <table>
-            <thead>
-              <tr>
+          <table className="w-full table-fixed border">
+            <thead className="border-b-2 text-gray-600">
+              <tr className="border">
                 <th>업체명</th>
                 <th>대표자명</th>
                 <th>입찰금액(원)</th>
@@ -128,14 +128,34 @@ const Table = ({ data, loading }: TableProps) => {
                 <th>기초금액</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-center">
               {detailData.map((value, index) => (
-                <tr key={index}>
-                  <td> {value.업체명}</td>
-                  <td> {value.대표자명}</td>
-                  <td> {value["입찰금액(원)"]}</td>
-                  <td> {value["투찰률(%)"]}</td>
-                  <td> {value.기초금액}</td>
+                <tr
+                  key={index}
+                  className={`${
+                    index % 2 === 0 && `bg-gray-200`
+                  } text-gray-600 p-1`}
+                >
+                  <td className="hover:text-black hover:font-bold">
+                    {" "}
+                    {value.업체명}
+                  </td>
+                  <td className="hover:text-black hover:font-bold">
+                    {" "}
+                    {value.대표자명}
+                  </td>
+                  <td className="hover:text-black hover:font-bold">
+                    {" "}
+                    {value["입찰금액(원)"]}
+                  </td>
+                  <td className="hover:text-black hover:font-bold">
+                    {" "}
+                    {value["투찰률(%)"]}
+                  </td>
+                  <td className="hover:text-black hover:font-bold">
+                    {" "}
+                    {value.기초금액}
+                  </td>
                 </tr>
               ))}
             </tbody>
