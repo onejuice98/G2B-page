@@ -118,6 +118,9 @@ const Table = ({ data, loading }: TableProps) => {
       </div>
       {!detailLoading && detailData.length > 0 && (
         <div className="w-full p-4 bg-white rounded-md shadow-md">
+          <div className="text-gray-500">
+            <span> 기초금액 : {detailData[0].기초금액} 원 </span>
+          </div>
           <table className="w-full table-fixed border">
             <thead className="border-b-2 text-gray-600">
               <tr className="border">
@@ -125,7 +128,6 @@ const Table = ({ data, loading }: TableProps) => {
                 <th>대표자명</th>
                 <th>입찰금액(원)</th>
                 <th>투찰률(%)</th>
-                <th>기초금액</th>
               </tr>
             </thead>
             <tbody className="text-center">
@@ -137,24 +139,16 @@ const Table = ({ data, loading }: TableProps) => {
                   } text-gray-600 p-1`}
                 >
                   <td className="hover:text-black hover:font-bold">
-                    {" "}
                     {value.업체명}
                   </td>
                   <td className="hover:text-black hover:font-bold">
-                    {" "}
                     {value.대표자명}
                   </td>
                   <td className="hover:text-black hover:font-bold">
-                    {" "}
                     {value["입찰금액(원)"]}
                   </td>
                   <td className="hover:text-black hover:font-bold">
-                    {" "}
                     {value["투찰률(%)"]}
-                  </td>
-                  <td className="hover:text-black hover:font-bold">
-                    {" "}
-                    {value.기초금액}
                   </td>
                 </tr>
               ))}
