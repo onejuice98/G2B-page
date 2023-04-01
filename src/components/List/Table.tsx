@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDetail } from "../../lib/apis";
 import { LoadingSVG } from "../common/svgs";
+import Detail from "./Detail";
 import { IPostList } from "./List";
 
 interface TableProps {
@@ -10,7 +11,7 @@ interface TableProps {
 
 const PAGINATION_SHOW_DATAS = 12;
 
-type DetailType = {
+export type DetailType = {
   업체명: string;
   대표자명: string;
   "입찰금액(원)": string;
@@ -116,32 +117,7 @@ const Table = ({ data, loading }: TableProps) => {
               ))}
         </div>
       </div>
-      {!detailLoading && detailData.length > 0 && (
-        <div className="w-full p-4 bg-white rounded-md shadow-md">
-          <table>
-            <thead>
-              <tr>
-                <th>업체명</th>
-                <th>대표자명</th>
-                <th>입찰금액(원)</th>
-                <th>투찰률(%)</th>
-                <th>기초금액</th>
-              </tr>
-            </thead>
-            <tbody>
-              {detailData.map((value, index) => (
-                <tr key={index}>
-                  <td> {value.업체명}</td>
-                  <td> {value.대표자명}</td>
-                  <td> {value["입찰금액(원)"]}</td>
-                  <td> {value["투찰률(%)"]}</td>
-                  <td> {value.기초금액}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      <Detail data={detailData} loading={detailLoading} />
     </>
   );
 };
