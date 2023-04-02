@@ -1,3 +1,4 @@
+import Typography from "../common/Typography";
 import { DetailType } from "./Table";
 
 interface DetailProps {
@@ -29,12 +30,26 @@ const Detail = ({ data, loading }: DetailProps) => {
                     index % 2 === 0 && `bg-gray-200`
                   } text-gray-600 p-1`}
                 >
-                  <td className="hover:text-green-500">{value.업체명}</td>
-                  <td className="hover:text-green-500">{value.대표자명}</td>
-                  <td className="hover:text-green-500">
-                    {value["입찰금액(원)"]}
+                  <td>
+                    <Typography variants="span" hoverColor="text-green-500">
+                      {value.업체명}
+                    </Typography>
                   </td>
-                  <td className="hover:text-green-500">{value["투찰률(%)"]}</td>
+                  <td>
+                    <Typography variants="span" hoverColor="text-green-500">
+                      {value.대표자명}
+                    </Typography>
+                  </td>
+                  <td>
+                    <Typography variants="span" hoverColor="text-green-500">
+                      {value["입찰금액(원)"]}
+                    </Typography>
+                  </td>
+                  <td>
+                    <Typography variants="span" hoverColor="text-green-500">
+                      {value["투찰률(%)"]}
+                    </Typography>
+                  </td>
                 </tr>
               ))}
             </tbody>

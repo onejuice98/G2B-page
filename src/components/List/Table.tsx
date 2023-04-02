@@ -97,7 +97,7 @@ const Table = ({ data, loading }: TableProps) => {
                         {value.입찰마감일시}
                       </span>
                     </td>
-                    <td className=" ">{value.마감여부}</td>
+                    <td>{value.마감여부}</td>
                   </tr>
                 ))}
           </tbody>
