@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDetail } from "../../lib/apis";
 import { LoadingSVG } from "../common/svgs";
+import Typography from "../common/Typography";
 import Detail from "./Detail";
 import { IPostList } from "./List";
 
@@ -74,21 +75,25 @@ const Table = ({ data, loading }: TableProps) => {
                 .map((value, index) => (
                   <tr key={index} className="border-b h-16">
                     <td className="py-6">
-                      <span
-                        onClick={() => clickedItem(value.공고번호)}
-                        className="hover:text-green-600 cursor-pointer"
+                      <Typography
+                        variants="span"
+                        hoverColor="text-green-600"
+                        click={() => clickedItem(value.공고번호)}
+                        pointer
                       >
                         {value.공고번호}
-                      </span>
+                      </Typography>
                     </td>
                     <td>{value.분류}</td>
                     <td>
-                      <span
-                        onClick={() => clickedItem(value.공고번호)}
-                        className="font-bold hover:text-green-600 cursor-pointer"
+                      <Typography
+                        variants="span"
+                        hoverColor="text-green-600"
+                        click={() => clickedItem(value.공고명)}
+                        pointer
                       >
                         {value.공고명}
-                      </span>
+                      </Typography>
                     </td>
                     <td>{value.수요기관}</td>
                     <td className="flex flex-col h-16 justify-center">

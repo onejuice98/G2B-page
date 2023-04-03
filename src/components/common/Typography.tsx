@@ -2,8 +2,16 @@ interface TypographyProps {
   variants: "h1" | "span";
   children: React.ReactNode;
   hoverColor?: string;
+  click?: (keyword: string) => Promise<void>;
+  pointer?: boolean;
 }
-const Typography = ({ variants, children, hoverColor }: TypographyProps) => {
+const Typography = ({
+  variants,
+  children,
+  hoverColor,
+  click,
+  pointer,
+}: TypographyProps) => {
   let tag;
   switch (variants) {
     case "h1":
@@ -11,7 +19,14 @@ const Typography = ({ variants, children, hoverColor }: TypographyProps) => {
       break;
     case "span":
       tag = (
-        <span className={hoverColor && `hover:${hoverColor}`}>{children}</span>
+        <span
+          onClick={() => click}
+          className={
+            hoverColor && `hover:${hoverColor} ` + pointer && `cursor-pointer`
+          }
+        >
+          {children}
+        </span>
       );
       break;
   }
