@@ -91,6 +91,7 @@ const Table = ({ data, loading }: TableProps) => {
                         hoverColor="text-green-600"
                         click={() => clickedItem(value.공고명)}
                         pointer
+                        bold
                       >
                         {value.공고명}
                       </Typography>
@@ -98,9 +99,9 @@ const Table = ({ data, loading }: TableProps) => {
                     <td>{value.수요기관}</td>
                     <td className="flex flex-col h-16 justify-center">
                       {value.입력일시.slice(0, 16)}
-                      <span className="text-xs text-blue-300">
+                      <Typography variants="span" size="xs" color="blue-300">
                         {value.입찰마감일시}
-                      </span>
+                      </Typography>
                     </td>
                     <td>{value.마감여부}</td>
                   </tr>
