@@ -14,9 +14,9 @@ const Layout = () => {
   return (
     <>
       <Header current={content} />
-      <Side clickFn={menuClicked} />
+      <Side clickFn={menuClicked} selected={content} />
 
-      <div className="flex w-[calc(100%-160px)] p-4 ml-[160px] pt-[80px]">
+      <div className="flex md:w-[calc(100%-224px)] p-8 md:ml-[224px] pt-[96px] rounded-md">
         {content === "목록" && <List />}
         {content === "모의" && <Example />}
       </div>
