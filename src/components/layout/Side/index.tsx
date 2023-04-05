@@ -7,7 +7,7 @@ interface SideProps {
 }
 const Side = ({ clickFn, selected }: SideProps) => {
   return (
-    <aside className="fixed w-[224px] h-full pt-[80px] bg-white z-10">
+    <aside className="fixed w-[224px] h-full pt-[80px] bg-white z-10 sm:hidden md:block">
       <nav className="flex flex-col justify-around px-2 gap-2">
         {MENUS.map((menu, index) => (
           <Menu
