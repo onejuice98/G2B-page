@@ -8,9 +8,9 @@ interface HeaderProps {
 const Header = ({ current }: HeaderProps) => {
   return (
     <header className="fixed w-full max-h-[80px] z-20 bg-white">
-      <nav className="flex items-center w-full h-16 gap-2 py-4">
+      <nav className="flex h-16 py-4">
         <Logo />
-        <div className="flex justify-between w-full px-6">
+        <div className="flex w-[calc(100%-224px)] justify-between px-6">
           <span className="font-semibold text-2xl text-gray-700">
             {current}
           </span>
