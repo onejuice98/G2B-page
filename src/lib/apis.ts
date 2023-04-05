@@ -35,3 +35,10 @@ export const getDetail = async (bidNo: string) => {
 
   return data;
 };
+
+export const postChatGpt = async (message: string) => {
+  const { data } = await axios.post(`https://g2b-bot.herokuapp.com/api/chat`, {
+    message,
+  });
+  return data;
+};
