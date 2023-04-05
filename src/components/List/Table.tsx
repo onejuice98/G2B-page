@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getDetail } from "../../lib/apis";
 import { LoadingSVG } from "../common/svgs";
+import Typography from "../common/Typography";
+import Detail from "./Detail";
 import { IPostList } from "./List";
 
 interface TableProps {
@@ -10,7 +12,7 @@ interface TableProps {
 
 const PAGINATION_SHOW_DATAS = 12;
 
-type DetailType = {
+export type DetailType = {
   업체명: string;
   대표자명: string;
   "입찰금액(원)": string;
@@ -73,30 +75,35 @@ const Table = ({ data, loading }: TableProps) => {
                 .map((value, index) => (
                   <tr key={index} className="border-b h-16">
                     <td className="py-6">
-                      <span
-                        onClick={() => clickedItem(value.공고번호)}
-                        className="hover:text-green-600 cursor-pointer"
+                      <Typography
+                        variants="span"
+                        hoverColor="text-green-600"
+                        click={() => clickedItem(value.공고번호)}
+                        pointer
                       >
                         {value.공고번호}
-                      </span>
+                      </Typography>
                     </td>
                     <td>{value.분류}</td>
                     <td>
-                      <span
-                        onClick={() => clickedItem(value.공고번호)}
-                        className="font-bold hover:text-green-600 cursor-pointer"
+                      <Typography
+                        variants="span"
+                        hoverColor="text-green-600"
+                        click={() => clickedItem(value.공고명)}
+                        pointer
+                        bold
                       >
                         {value.공고명}
-                      </span>
+                      </Typography>
                     </td>
                     <td>{value.수요기관}</td>
                     <td className="flex flex-col h-16 justify-center">
                       {value.입력일시.slice(0, 16)}
-                      <span className="text-xs text-blue-300">
+                      <Typography variants="span" size="xs" color="blue-300">
                         {value.입찰마감일시}
-                      </span>
+                      </Typography>
                     </td>
-                    <td className=" ">{value.마감여부}</td>
+                    <td>{value.마감여부}</td>
                   </tr>
                 ))}
           </tbody>
@@ -116,46 +123,7 @@ const Table = ({ data, loading }: TableProps) => {
               ))}
         </div>
       </div>
-      {!detailLoading && detailData.length > 0 && (
-        <div className="w-full p-4 bg-white rounded-md shadow-md">
-          <div className="text-gray-500">
-            <span> 기초금액 : {detailData[0].기초금액} 원 </span>
-          </div>
-          <table className="w-full table-fixed border">
-            <thead className="border-b-2 text-gray-600">
-              <tr className="border">
-                <th>업체명</th>
-                <th>대표자명</th>
-                <th>입찰금액(원)</th>
-                <th>투찰률(%)</th>
-              </tr>
-            </thead>
-            <tbody className="text-center">
-              {detailData.map((value, index) => (
-                <tr
-                  key={index}
-                  className={`${
-                    index % 2 === 0 && `bg-gray-200`
-                  } text-gray-600 p-1`}
-                >
-                  <td className="hover:text-black hover:font-bold">
-                    {value.업체명}
-                  </td>
-                  <td className="hover:text-black hover:font-bold">
-                    {value.대표자명}
-                  </td>
-                  <td className="hover:text-black hover:font-bold">
-                    {value["입찰금액(원)"]}
-                  </td>
-                  <td className="hover:text-black hover:font-bold">
-                    {value["투찰률(%)"]}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      <Detail data={detailData} loading={detailLoading} />
     </>
   );
 };
