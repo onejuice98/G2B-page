@@ -1,10 +1,10 @@
 interface TypographyProps {
   variants: "h1" | "span";
   children: React.ReactNode;
-  size?: "xs";
-  color?: "blue-300";
+  size?: "text-xs";
+  color?: "text-blue-300";
   hoverColor?: string;
-  click?: (keyword: string) => Promise<void>;
+  click?: any;
   pointer?: boolean;
   bold?: boolean;
 }
@@ -18,7 +18,7 @@ const Typography = ({
   pointer,
   bold,
 }: TypographyProps) => {
-  const typoStyle = `${hoverColor && `hover:${hoverColor}`} ${
+  const typoStyle = `${hoverColor && `${hoverColor}`} ${
     pointer && `cursor-pointer`
   } ${bold && `font-bold`} ${
     size && `text-${size} ${color && `text-${color}`}`
