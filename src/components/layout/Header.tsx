@@ -1,3 +1,5 @@
+import { BellSVG, SettingSVG } from "../common/svgs";
+
 interface HeaderProps {
   current: string;
 }
@@ -8,7 +10,13 @@ const Header = ({ current }: HeaderProps) => {
         <div className="w-40 flex justify-center items-center">
           <span className="font-bold text-3xl text-green-400">👾 나장봇</span>
         </div>
-        <span className="font-semibold text-2xl text-gray-700">{current}</span>
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-2xl text-gray-700">
+            {current}
+          </span>
+          <BellSVG w={20} h={20} />
+          <SettingSVG w={20} h={20} />
+        </div>
       </nav>
     </header>
   );
