@@ -3,11 +3,12 @@ import { useState } from "react";
 interface svgProps {
   w: number;
   h: number;
+  selected?: boolean;
 }
-export const DashboardSVG = ({ w, h }: svgProps) => {
+export const DashboardSVG = ({ w, h, selected }: svgProps) => {
   return (
     <svg
-      fill="#737791"
+      fill={`${selected ? `#007d41` : `#737791`}`}
       viewBox="0 0 24 24"
       id="dashboard-alt"
       width={w}
@@ -32,7 +33,7 @@ export const DashboardSVG = ({ w, h }: svgProps) => {
   );
 };
 
-export const ListSVG = ({ w, h }: svgProps) => {
+export const ListSVG = ({ w, h, selected }: svgProps) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -50,8 +51,8 @@ export const ListSVG = ({ w, h }: svgProps) => {
       <g id="SVGRepo_iconCarrier">
         <path
           d="M7 8H17M7 12H17M7 16H13M4 4H20V20H4V4Z"
-          stroke="#737791"
-          strokeWidth="1.5"
+          stroke={`${selected ? `#007d41` : `#737791`}`}
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         ></path>
@@ -60,7 +61,7 @@ export const ListSVG = ({ w, h }: svgProps) => {
   );
 };
 
-export const ChartSVG = ({ w, h }: svgProps) => {
+export const ChartSVG = ({ w, h, selected }: svgProps) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -78,12 +79,12 @@ export const ChartSVG = ({ w, h }: svgProps) => {
       <g id="SVGRepo_iconCarrier">
         <path
           d="M19 12C20.1046 12 21.023 12.9068 20.7805 13.9844C19.8768 18.0002 16.2887 21 12 21C7.02944 21 3 16.9706 3 12C3 7.71127 5.99979 4.12318 10.0156 3.21949C11.0932 2.97699 12 3.89543 12 5V10C12 11.1046 12.8954 12 14 12H19Z"
-          stroke="#737791"
+          stroke={`${selected ? `#007d41` : `#737791`}`}
           strokeWidth="2"
         ></path>
         <path
           d="M20.6713 7.03621C20.0709 5.30223 18.6978 3.92908 16.9638 3.32874C15.92 2.96737 15 3.89543 15 5L15 7C15 8.10457 15.8954 9 17 9L19 9C20.1046 9 21.0326 8.07999 20.6713 7.03621Z"
-          stroke="#737791"
+          stroke={`${selected ? `#007d41` : `#737791`}`}
           strokeWidth="2"
         ></path>
       </g>
@@ -91,7 +92,7 @@ export const ChartSVG = ({ w, h }: svgProps) => {
   );
 };
 
-export const EyeSVG = ({ w, h }: svgProps) => {
+export const EyeSVG = ({ w, h, selected }: svgProps) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -109,10 +110,15 @@ export const EyeSVG = ({ w, h }: svgProps) => {
       <g id="SVGRepo_iconCarrier">
         <path
           d="M12 5C6.55576 5 3.53109 9.23425 2.45554 11.1164C2.23488 11.5025 2.12456 11.6956 2.1367 11.9836C2.14885 12.2716 2.27857 12.4598 2.53799 12.8362C3.8182 14.6935 7.29389 19 12 19C16.7061 19 20.1818 14.6935 21.462 12.8362C21.7214 12.4598 21.8511 12.2716 21.8633 11.9836C21.8754 11.6956 21.7651 11.5025 21.5445 11.1164C20.4689 9.23425 17.4442 5 12 5Z"
-          stroke="#737791"
+          stroke={`${selected ? `#007d41` : `#737791`}`}
           strokeWidth="2"
         ></path>
-        <circle cx="12" cy="12" r="4" fill="#737791"></circle>
+        <circle
+          cx="12"
+          cy="12"
+          r="4"
+          fill={`${selected ? `#007d41` : `#737791`}`}
+        ></circle>
       </g>
     </svg>
   );
