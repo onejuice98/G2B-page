@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div className="rounded-md bg-gray-300 shadow-md">최근 입찰</div>
         <div className="rounded-md bg-gray-300 shadow-md">승률</div>
       </div>
-      <div className="rounded-md bg-gray-300 shadow-md h-[100px]">
+      <div className="rounded-md bg-gray-300 shadow-md min-h-[620px]">
         당신의 차트
       </div>
       <Chat />
