@@ -1,3 +1,4 @@
+import Avatar from "../common/Avatar";
 import { BellSVG, SettingSVG } from "../common/svgs";
 
 interface HeaderProps {
@@ -16,6 +17,7 @@ const Header = ({ current }: HeaderProps) => {
           </span>
           <BellSVG w={20} h={20} />
           <SettingSVG w={20} h={20} />
+          <Avatar />
         </div>
       </nav>
     </header>
