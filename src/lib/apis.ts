@@ -42,3 +42,20 @@ export const postChatGpt = async (message: string) => {
   });
   return data;
 };
+
+export type TotalType = {
+  rank: number;
+  업체명: string;
+  대표자명: string;
+  "입찰금액(원)": string;
+  "투찰률(%)": string;
+  기초금액: string;
+};
+
+export const getTotal = async (ceo: string) => {
+  const { data } = await axios.get(
+    `https://g2b-bot.herokuapp.com/api/post/result/detail?ceo=${ceo}`
+  );
+
+  return data;
+};
