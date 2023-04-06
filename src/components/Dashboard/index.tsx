@@ -16,7 +16,7 @@ const Dashboard = () => {
     fetchTotal();
   }, []);
   return (
-    <div className="w-full grid grid-cols-[2fr_1fr] gap-6">
+    <div className="w-full grid grid-cols-[3fr_2fr] gap-6">
       <div className="grid grid-cols-2 gap-6">
         <Total mode="EARN" total={total} />
         <Total mode="WIN" total={total} />

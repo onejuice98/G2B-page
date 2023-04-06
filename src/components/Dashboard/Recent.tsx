@@ -15,7 +15,7 @@ const Recent = () => {
 
   return (
     <div className="flex justify-between bg-lime-600 rounded-lg shadow-md p-4 text-white">
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between w-[90%]">
         <span className="font-bold">{post ? post.공고명 : "Loading..."}</span>
         <hr className="border-gray-300" />
         <div className="flex text-sm text-gray-200">

@@ -20,7 +20,7 @@ const Total = ({ mode, total }: TotalProps) => {
 
   return (
     <div
-      className={`flex flex-col justify-end relative h-52 p-6 rounded-lg shadow-md ${bgColor} overflow-hidden`}
+      className={`flex flex-col justify-end relative h-56 p-6 rounded-lg shadow-md ${bgColor} overflow-hidden`}
     >
       <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
         <div className={`h-64 w-64 ${circleColor1} rounded-full`} />
