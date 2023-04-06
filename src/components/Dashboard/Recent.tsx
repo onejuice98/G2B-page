@@ -16,11 +16,13 @@ const Recent = () => {
   return (
     <div className="flex justify-between bg-lime-600 rounded-lg shadow-md p-4 text-white">
       <div className="flex flex-col justify-between">
-        <span className="font-bold">{post?.공고명}</span>
+        <span className="font-bold">{post ? post.공고명 : "Loading..."}</span>
         <hr className="border-gray-300" />
         <div className="flex text-sm text-gray-200">
-          <span>마감일시 : {post?.입찰마감일시}</span>
-          <span className="font-bold ml-2"> 상태 : {post?.마감여부}</span>
+          <span>마감일시 : {post ? post.입찰마감일시 : "Loading..."}</span>
+          <span className="font-bold ml-2">
+            상태 : {post ? post.마감여부 : "Loading..."}
+          </span>
         </div>
       </div>
       <a
