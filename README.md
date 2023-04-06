@@ -1,46 +1,32 @@
-# Getting Started with NajangBOT
+# G2B 어드민 페이지 NajangBOT
+## 🔗 Link
+## 📒 Description
+### 나라장터 데이터 크롤러를 통해 수집한 정보 토대로 만든 어드민(대시보드) 페이지
+**Crawler Bot** https://github.com/onejuice98/G2B
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* 대시보드 페이지로 총 수익, 입찰 성공 횟수, 최근 공고, 챗GPT 등 이용 가능
+* 목록을 통해서 현재 공고 검색 가능 (오직 4개의 입력)
+* 모의기를 통해서 모의 입찰 기능
+* 차트로 기업의 이력 확인 (구현 중)
 
-## Available Scripts
+## Stack
+| skill | version|
+|---|---|
+|React | 18.2.0|
+React-query | 3.39.3
+typescript | 4.4.2
+axios | 1.3.4
+tailwindcss | 3.2.7
+nivo | 0.8
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+React-query : 데이터베이스를 사용하지 않아. 크롤링 데이터를 서버 메모리에 저장하다보니, 저장, 조회 작업에서 성능상의 문제 막기 위해서 캐싱을 이용하기 위해 사용 <br/>
+nivo : 차트 구현
+## Install & Start
+```bash
+git clone https://github.com/onejuice98/najangbot.git
+yarn install
+```
+```bash
+yarn start
+```
+## 화면 
