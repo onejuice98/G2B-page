@@ -3,18 +3,9 @@ import { getTotal, TotalType } from "../../lib/apis";
 
 interface TotalProps {
   mode: "EARN" | "WIN";
+  total?: TotalType[];
 }
-const Total = ({ mode }: TotalProps) => {
-  const [total, setTotal] = useState<TotalType[]>();
-
-  useEffect(() => {
-    const fetchTotal = async () => {
-      const data = await getTotal("이복균");
-      setTotal(data[0]);
-    };
-    fetchTotal();
-  }, []);
-
+const Total = ({ mode, total }: TotalProps) => {
   const bidParticipationCount = total?.length;
   const won = total?.filter((value) => value.rank === 1);
   const wonCount = won?.length;
