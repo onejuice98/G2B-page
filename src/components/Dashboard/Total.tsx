@@ -41,7 +41,7 @@ const Total = ({ mode }: TotalProps) => {
         {mode === "EARN" ? (
           <>
             <span className="text-2xl font-bold text-white">
-              ₩ {formattedEarn}
+              ₩ {formattedEarn ? formattedEarn : "Loading..."}
             </span>
             <span className="text-xl font-bold text-gray-200">
               💲 Total Earn
@@ -50,9 +50,9 @@ const Total = ({ mode }: TotalProps) => {
         ) : (
           <>
             <span className="text-4xl font-bold text-white">
-              {wonCount}
+              {wonCount ? wonCount : "Loading..."}
               <span className="text-xl text-gray-200 opacity-50 ml-4">
-                / {bidParticipationCount}
+                / {bidParticipationCount ? bidParticipationCount : "Loading..."}
               </span>
             </span>
             <span className="text-xl font-bold text-gray-200">🏆 Win Rate</span>
