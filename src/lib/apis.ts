@@ -59,3 +59,8 @@ export const getTotal = async (ceo: string) => {
 
   return data;
 };
+
+export const getRecentPost = async () => {
+  const { data } = await axios.get(`https://g2b-bot.herokuapp.com/api/recent`);
+  return data;
+};

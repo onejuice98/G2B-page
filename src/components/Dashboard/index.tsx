@@ -1,4 +1,5 @@
 import Chat from "./Chat";
+import Recent from "./Recent";
 import Total from "./Total";
 
 const Dashboard = () => {
@@ -9,7 +10,7 @@ const Dashboard = () => {
         <Total mode="WIN" />
       </div>
       <div className="grid grid-rows-2 gap-6">
-        <div className="rounded-md bg-gray-300 shadow-md">최근 입찰</div>
+        <Recent />
         <div className="rounded-md bg-gray-300 shadow-md">승률</div>
       </div>
       <div className="rounded-md bg-gray-300 shadow-md min-h-[620px]">

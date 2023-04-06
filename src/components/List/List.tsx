@@ -4,7 +4,7 @@ import Form from "./Form";
 import Notice from "./Notice";
 import Table from "./Table";
 
-export interface IPostList {
+export type IPostList = {
   공고번호: string;
   분류: string;
   공고명: string;
@@ -14,7 +14,7 @@ export interface IPostList {
   입력일시: string;
   입찰마감일시: string;
   마감여부: string;
-}
+};
 
 const List = () => {
   const queryClient = useQueryClient();
