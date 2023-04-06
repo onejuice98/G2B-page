@@ -1,20 +1,33 @@
+import { useEffect, useState } from "react";
+import { getTotal, TotalType } from "../../lib/apis";
+import LineCharts from "../Charts/LineCharts";
 import Chat from "./Chat";
+import Recent from "./Recent";
+import RecentDetail from "./RecentDetail";
+import Total from "./Total";
 
 const Dashboard = () => {
+  const [total, setTotal] = useState<TotalType[]>();
+
+  useEffect(() => {
+    const fetchTotal = async () => {
+      const data = await getTotal("이복균");
+      setTotal(data[0]);
+    };
+    fetchTotal();
+  }, []);
   return (
-    <div className="w-full grid grid-cols-[2fr_1fr] gap-6">
+    <div className="w-full grid grid-cols-[3fr_2fr] gap-6">
       <div className="grid grid-cols-2 gap-6">
-        <div className="rounded-md bg-gray-300 shadow-md h-52">총 수익</div>
-        <div className="rounded-md bg-gray-300 shadow-md h-52">
-          최근 참여한 입찰
-        </div>
+        <Total mode="EARN" total={total} />
+        <Total mode="WIN" total={total} />
       </div>
       <div className="grid grid-rows-2 gap-6">
-        <div className="rounded-md bg-gray-300 shadow-md">최근 입찰</div>
-        <div className="rounded-md bg-gray-300 shadow-md">승률</div>
+        <Recent />
+        <RecentDetail detail={total ? total[0] : undefined} />
       </div>
-      <div className="rounded-md bg-gray-300 shadow-md min-h-[620px]">
-        당신의 차트
+      <div className="rounded-lg bg-gray-200 shadow-md min-h-[620px]">
+        <LineCharts total={total} />
       </div>
       <Chat />
     </div>
