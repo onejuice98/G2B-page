@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getTotal, TotalType } from "../../lib/apis";
 import Chat from "./Chat";
 import Recent from "./Recent";
+import RecentDetail from "./RecentDetail";
 import Total from "./Total";
 
 const Dashboard = () => {
@@ -22,7 +23,7 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-rows-2 gap-6">
         <Recent />
-        <div className="rounded-md bg-gray-300 shadow-md">승률</div>
+        <RecentDetail detail={total ? total[0] : undefined} />
       </div>
       <div className="rounded-md bg-gray-300 shadow-md min-h-[620px]">
         당신의 차트
