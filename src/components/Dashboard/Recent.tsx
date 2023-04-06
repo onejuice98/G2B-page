@@ -31,6 +31,7 @@ const Recent = () => {
           11
         )}&bidseq=00&releaseYn=Y&taskClCd=3`}
         target="_blank"
+        rel="noreferrer"
       >
         <RightArrowSVG w={30} h={30} />
       </a>

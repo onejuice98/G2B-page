@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { getTotal, TotalType } from "../../lib/apis";
+import { TotalType } from "../../lib/apis";
 
 interface TotalProps {
   mode: "EARN" | "WIN";

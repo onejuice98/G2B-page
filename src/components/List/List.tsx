@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getList, postList } from "../../lib/apis";
 import Form from "./Form";
-import Notice from "./Notice";
 import Table from "./Table";
 
 export type IPostList = {
@@ -43,7 +42,6 @@ const List = () => {
       <div className="flex flex-col w-full gap-6">
         <div className="flex flex-col gap-2">
           <Form submitFn={handleSubmit} />
-          {/* <Notice /> */}
         </div>
 
         {lists !== undefined && (
