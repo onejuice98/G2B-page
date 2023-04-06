@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Charts from "../Charts";
 import Dashboard from "../Dashboard";
 import Example from "../Example/Example";
 import List from "../List/List";
@@ -21,6 +22,7 @@ const Layout = () => {
         {content === "목록" && <List />}
         {content === "모의" && <Example />}
         {content === "대시보드" && <Dashboard />}
+        {content === "차트" && <Charts />}
       </div>
     </>
   );

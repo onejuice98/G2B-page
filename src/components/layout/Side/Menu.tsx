@@ -1,15 +1,9 @@
 import React from "react";
 import GrayText from "../../common/GrayText";
-import {
-  ChartSVG,
-  DashboardSVG,
-  EyeSVG,
-  ListSVG,
-  SettingSVG,
-} from "../../common/svgs";
+import { ChartSVG, DashboardSVG, EyeSVG, ListSVG } from "../../common/svgs";
 
-type MenuType = "대시보드" | "목록" | "차트" | "모의" | "설정";
-export const MENUS: MenuType[] = ["대시보드", "목록", "차트", "모의", "설정"];
+type MenuType = "대시보드" | "목록" | "차트" | "모의";
+export const MENUS: MenuType[] = ["대시보드", "목록", "차트", "모의"];
 interface MenuProps {
   clickFn: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   name: MenuType;
@@ -29,9 +23,6 @@ const Menu = ({ clickFn, name, selected }: MenuProps) => {
       break;
     case "모의":
       nameSvg = <EyeSVG w={20} h={20} selected={selected} />;
-      break;
-    case "설정":
-      nameSvg = <SettingSVG w={20} h={20} selected={selected} />;
       break;
   }
 

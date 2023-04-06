@@ -14,7 +14,7 @@ const Side = ({ clickFn, selected }: SideProps) => {
             key={index}
             clickFn={clickFn}
             name={menu}
-            selected={selected == menu}
+            selected={selected === menu}
           />
         ))}
       </nav>

@@ -6,84 +6,13 @@ import { CheckSVG } from "../common/svgs";
 let cardValues = randCardValue();
 
 type modeType = "self" | "auto";
-type resultType = {
-  "-2.5~-3.0": number;
-  "-2.0~-2.5": number;
-  "-1.5~-2.0": number;
-  "-1.0~-1.5": number;
-  "-0.5~-1.0": number;
-  "0~-0.5": number;
-  "0~0.5": number;
-  "0.5~1.0": number;
-  "1.0~1.5": number;
-  "1.5~2.0": number;
-  "2.0~2.5": number;
-  "2.5~3.0": number;
-};
-const rangeCount = (array: number[]) => {
-  let result: resultType = {
-    "-2.5~-3.0": 0,
-    "-2.0~-2.5": 0,
-    "-1.5~-2.0": 0,
-    "-1.0~-1.5": 0,
-    "-0.5~-1.0": 0,
-    "0~-0.5": 0,
-    "0~0.5": 0,
-    "0.5~1.0": 0,
-    "1.0~1.5": 0,
-    "1.5~2.0": 0,
-    "2.0~2.5": 0,
-    "2.5~3.0": 0,
-  };
-  array.forEach((value) => {
-    switch (true) {
-      case value > -3.0 && value < -2.5:
-        result["-2.5~-3.0"] += 1;
-        break;
-      case value > -2.5 && value < -2.0:
-        result["-2.0~-2.5"] += 1;
-        break;
-      case value > -2.0 && value < -1.5:
-        result["-1.5~-2.0"] += 1;
-        break;
-      case value > -1.5 && value < -1.0:
-        result["-1.0~-1.5"] += 1;
-        break;
-      case value > -1.0 && value < -0.5:
-        result["-0.5~-1.0"] += 1;
-        break;
-      case value > -0.5 && value < 0:
-        result["0~-0.5"] += 1;
-        break;
-      case value > 0 && value < 0.5:
-        result["0~0.5"] += 1;
-        break;
-      case value > 0.5 && value < 1.0:
-        result["0.5~1.0"] += 1;
-        break;
-      case value > 1.0 && value < 1.5:
-        result["1.0~1.5"] += 1;
-        break;
-      case value > 1.5 && value < 2.0:
-        result["1.5~2.0"] += 1;
-        break;
-      case value > 2.0 && value < 2.5:
-        result["2.0~2.5"] += 1;
-        break;
-      case value > 2.5 && value < 3.0:
-        result["2.5~3.0"] += 1;
-        break;
-    }
-  });
-  return result;
-};
+
 const Example = () => {
   const [mode, setMode] = useState<modeType>("self");
   const [userPer, setUserPer] = useState<number>(0);
   const [clickCnt, setClickCnt] = useState<number>(0);
   const [selectedCard, setSelectedCard] = useState<number[]>([]);
   const [autoResultList, setAutoResultList] = useState<number[]>([]);
-  const [autoResultObject, setAutoResultObject] = useState<resultType>();
   const [emphasisCard, setEmphasisCard] = useState<number>(0);
 
   const cardClicked = (value: number, index: number) => {
@@ -119,7 +48,6 @@ const Example = () => {
     }
     setEmphasisCard(Math.floor(offsetRand(0, cnt.value)));
     setAutoResultList(results);
-    setAutoResultObject(rangeCount(results));
     cnt.value = 0;
   };
   return (
