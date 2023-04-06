@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTotal, TotalType } from "../../lib/apis";
+import LineCharts from "../Charts/LineCharts";
 import Chat from "./Chat";
 import Recent from "./Recent";
 import RecentDetail from "./RecentDetail";
@@ -25,8 +26,8 @@ const Dashboard = () => {
         <Recent />
         <RecentDetail detail={total ? total[0] : undefined} />
       </div>
-      <div className="rounded-md bg-gray-300 shadow-md min-h-[620px]">
-        당신의 차트
+      <div className="rounded-lg bg-gray-200 shadow-md min-h-[620px]">
+        <LineCharts total={total} />
       </div>
       <Chat />
     </div>
