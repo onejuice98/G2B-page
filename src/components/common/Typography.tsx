@@ -4,7 +4,7 @@ interface TypographyProps {
   size?: "text-xs";
   color?: "text-blue-300";
   hoverColor?: string;
-  click?: any;
+  click?: () => void;
   pointer?: boolean;
   bold?: boolean;
 }
