@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { postChatGpt } from "../../lib/apis";
+import { IMessage } from "../../types/dashboard";
 import { SendSVG } from "../common/svgs";
 
-type MessageType = {
-  text: string;
-  user: boolean;
-};
 const Chat = () => {
   const [inputText, setInputText] = useState<string>("");
-  const [message, setMessage] = useState<MessageType[]>([
+  const [message, setMessage] = useState<IMessage[]>([
     { text: "안녕하세요! 반갑습니다. 무엇이든 물어보세요!", user: false },
   ]);
   const [loading, setLoading] = useState<boolean>(false);

@@ -1,9 +1,9 @@
 import { ResponsiveLine } from "@nivo/line";
-import { TotalType } from "../../lib/apis";
+import { IBidDetails } from "../../lib/apis";
 import { chartsData } from "../../lib/chartsData";
 
 interface LineChartsProps {
-  total?: TotalType[];
+  total?: IBidDetails[];
 }
 const LineCharts = ({ total }: LineChartsProps) => {
   const data = chartsData(total);

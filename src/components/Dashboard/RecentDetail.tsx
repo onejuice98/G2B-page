@@ -1,8 +1,5 @@
-import { TotalType } from "../../lib/apis";
+import { RecentDetailProps } from "../../types/dashboard";
 
-interface RecentDetailProps {
-  detail?: TotalType;
-}
 const RecentDetail = ({ detail }: RecentDetailProps) => {
   const rank = detail ? detail.rank : "Loading...";
   const rankFormat =

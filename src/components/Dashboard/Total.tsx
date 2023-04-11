@@ -1,9 +1,5 @@
-import { TotalType } from "../../lib/apis";
+import { TotalProps } from "../../types/dashboard";
 
-interface TotalProps {
-  mode: "EARN" | "WIN";
-  total?: TotalType[];
-}
 const Total = ({ mode, total }: TotalProps) => {
   const bidParticipationCount = total?.length;
   const won = total?.filter((value) => value.rank === 1);
