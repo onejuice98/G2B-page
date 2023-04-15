@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getTotal, TotalType } from "../../lib/apis";
+import { getTotal, IBidDetails } from "../../lib/apis";
 import LineCharts from "./LineCharts";
 
 const Charts = () => {
-  const [total, setTotal] = useState<TotalType[]>();
+  const [total, setTotal] = useState<IBidDetails[]>();
 
   useEffect(() => {
     const fetchTotal = async () => {

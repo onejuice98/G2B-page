@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getTotal, TotalType } from "../../lib/apis";
+import { getTotal } from "../../lib/apis";
+import { IBidDetails } from "../../types/dashboard";
 import LineCharts from "../Charts/LineCharts";
 import Chat from "./Chat";
 import Recent from "./Recent";
@@ -7,7 +8,7 @@ import RecentDetail from "./RecentDetail";
 import Total from "./Total";
 
 const Dashboard = () => {
-  const [total, setTotal] = useState<TotalType[]>();
+  const [total, setTotal] = useState<IBidDetails[]>();
 
   useEffect(() => {
     const fetchTotal = async () => {

@@ -1,6 +1,6 @@
-import { TotalType } from "./apis";
+import { IBidDetails } from "./apis";
 
-export const chartsData = (data?: TotalType[]) => {
+export const chartsData = (data?: IBidDetails[]) => {
   const result: {
     id: string | number;
     color: string;
