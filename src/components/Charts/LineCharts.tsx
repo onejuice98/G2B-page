@@ -1,6 +1,6 @@
 import { ResponsiveLine } from "@nivo/line";
-import { IBidDetails } from "../../lib/apis";
 import { chartsData } from "../../lib/chartsData";
+import { IBidDetails } from "../../types/dashboard";
 
 interface LineChartsProps {
   total?: IBidDetails[];
