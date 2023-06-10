@@ -14,7 +14,6 @@ const Charts = () => {
     fetchTotal();
   }, []);
 
-  console.log(total);
   return (
     <div className="w-full grid grid-cols-2 gap-6">
       <div className="rounded-lg bg-gray-200 shadow-md min-h-[620px]">
