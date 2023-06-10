@@ -1,4 +1,4 @@
-import { IBidDetails } from "./apis";
+import { IBidDetails } from "../types/dashboard";
 
 export const chartsData = (data?: IBidDetails[]) => {
   const result: {

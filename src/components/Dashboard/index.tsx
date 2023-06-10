@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getTotal } from "../../lib/apis";
 import { IBidDetails } from "../../types/dashboard";
 import LineCharts from "../Charts/LineCharts";
+import Grid from "../common/Grid";
 import Chat from "./Chat";
 import Recent from "./Recent";
 import RecentDetail from "./RecentDetail";
@@ -18,7 +19,7 @@ const Dashboard = () => {
     fetchTotal();
   }, []);
   return (
-    <div className="w-full grid grid-cols-[3fr_2fr] gap-6">
+    <Grid>
       <div className="grid grid-cols-2 gap-6">
         <Total mode="EARN" total={total} />
         <Total mode="WIN" total={total} />
@@ -31,7 +32,7 @@ const Dashboard = () => {
         <LineCharts total={total} />
       </div>
       <Chat />
-    </div>
+    </Grid>
   );
 };
 export default Dashboard;

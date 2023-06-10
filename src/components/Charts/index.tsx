@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getTotal, IBidDetails } from "../../lib/apis";
+import { getTotal } from "../../lib/apis";
+import { IBidDetails } from "../../types/dashboard";
 import LineCharts from "./LineCharts";
 
 const Charts = () => {
